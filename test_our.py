@@ -16,7 +16,7 @@ import numpy as np
 #print(path+'/fisr.png')
 import test as test
 
-quick_draw = {0: 'axe', 1: 'cat', 2:'apple'}
+quick_draw = {0: 'axe', 1: 'cat', 2:'apple', 3:'butterfly',4:'carrot',5:'clock'}
 batch_size = 128
 num_of_classes=3
 image_size=28
@@ -78,7 +78,7 @@ def test_cnn(test_img):
 #print(test_im.shape)
 #train_cnn(test_im)
 #cwd = os.getcwd()
-quick_draw = {0: 'axe', 1: 'cat', 2:'apple'}
+quick_draw = {0: 'axe', 1: 'cat', 2:'apple',3:'butterfly',4:'carrot',5:'clock'}
 reversed_quik_draw = dict(map(reversed, quick_draw.items()))
 
 files_num=0

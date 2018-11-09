@@ -15,9 +15,9 @@ import tensorflow as tf
 import numpy as np
 #print(path+'/fisr.png')
 
-quick_draw = {0: 'axe', 1: 'cat', 2:'apple'}
+quick_draw = {0: 'axe', 1: 'cat', 2:'apple',3:'butterfly',4:'carrot',5:'clock'}
 batch_size = 128
-num_of_classes=3
+num_of_classes=6
 image_size=28
 validate_data=3000
 
@@ -65,7 +65,7 @@ def test_cnn(test_img):
         print("probability result:[axe,cat,apple]")
         for i,prob in enumerate(res):
             print("test number ",i)
-            for j in range(3):
+            for j in range(num_of_classes):
                 print("probability to be",quick_draw[j], ":%.16f" % prob[j])
             print("predictes result for test number",i,"is:",quick_draw[np.argmax(res[i])])
             y_pred[i]=(np.argmax(res[i]))

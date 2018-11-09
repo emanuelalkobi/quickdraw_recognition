@@ -19,7 +19,7 @@ import test as test
 
 
 batch_size = 128
-num_of_classes=3
+num_of_classes=6
 image_size=28
 validate_data=3000
 
@@ -108,20 +108,27 @@ def train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n, print_every):
         saver.save(sess, "./saved_sess/model.ckpt")
 
 def load_data():
-    axe_data=np.load('axe.npy')
-    cat_data=np.load('cat.npy')
-    apple_data=np.load('apple.npy')
+    dir_data='data/'
+    axe_data=np.load(dir_data+'axe.npy')
+    cat_data=np.load(dir_data+'cat.npy')
+    apple_data=np.load(dir_data+'apple.npy')
+    butterfly_data=np.load(dir_data+'butterfly.npy')
+    carrot_data=np.load(dir_data+'carrot.npy')
+    clock_data=np.load(dir_data+'clock.npy')
 
 
     #labels are 0-axe 1-cat 2-apple
     axe_labels=np.zeros(axe_data.shape[0])*0
     cat_labels=np.ones(cat_data.shape[0])*1
     apple_labels=np.ones(apple_data.shape[0])*2
+    butterfly_labels=np.zeros(butterfly_data.shape[0])*3
+    carrot_labels=np.ones(carrot_data.shape[0])*4
+    clock_labels=np.ones(clock_data.shape[0])*5
     
     #connect all data for randomization
 
-    data_d=np.concatenate((axe_data,cat_data,apple_data))
-    data_l=np.concatenate((axe_labels,cat_labels,apple_labels))
+    data_d=np.concatenate((axe_data,cat_data,apple_data,butterfly_data,carrot_data,clock_data))
+    data_l=np.concatenate((axe_labels,cat_labels,apple_labels,butterfly_labels,carrot_labels,clock_labels))
     data_l=np.expand_dims(data_l,1)
     data_all=np.concatenate((data_d,data_l),axis=1)
     data_all=np.random.permutation(data_all)
@@ -151,8 +158,10 @@ print(x_data.shape)
 print(y_data.shape)
 print(x_test.shape)
 print(y_test.shape)
-#model_dict = apply_classification_loss(SVHN_net_v0)
-#train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
+model_dict = apply_classification_loss(SVHN_net_v0)
+train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
+
+#test test data after finishing training 
 y_predicted=test.test_cnn(x_test)
 print(x_test.shape)
 print("predicted is :",(y_predicted.shape),y_test.shape)
