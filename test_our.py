@@ -14,6 +14,7 @@ import numpy as np
 import tensorflow as tf
 import numpy as np
 #print(path+'/fisr.png')
+import test as test
 
 quick_draw = {0: 'axe', 1: 'cat', 2:'apple'}
 batch_size = 128
@@ -76,3 +77,48 @@ def test_cnn(test_img):
 #test_im=np.reshape(test_im,[test_im.shape[0],image_size,image_size,1])
 #print(test_im.shape)
 #train_cnn(test_im)
+#cwd = os.getcwd()
+quick_draw = {0: 'axe', 1: 'cat', 2:'apple'}
+reversed_quik_draw = dict(map(reversed, quick_draw.items()))
+
+files_num=0
+for i,file in enumerate(os.listdir('test_img/')):
+    filename = os.fsdecode(file)
+    if filename.endswith(".jpg") :
+        files_num=files_num+1
+
+#batch=np.zeros((files_num,image_size,image_size))
+#print(batch.shape)
+#labels=np.zeros(files_num)
+
+#for i,file in enumerate(os.listdir('test_img/')):
+#    filename = os.fsdecode(file)
+#    if filename.endswith(".jpg") :
+#        print("file name!!!!!!!!!!!!!!!!!!!!!!!",filename,i)
+#        img_name=filename
+#        img = cv2.imread('test_img/'+img_name,0)
+#        img=255-img
+#        print(img.shape)
+#        resized_image = cv2.resize(img, (image_size, image_size),interpolation = cv2.INTER_CUBIC)
+#        cv2.imwrite('process_img/'+img_name, resized_image)
+        #resized_image=np.expand_dims(resized_image,0)
+        #resized_image=np.expand_dims(resized_image,3)
+#        print(resized_image.shape,"-0-0--0-")
+
+
+#print(batch.shape,"000000000")
+#batch=np.expand_dims(batch,3)
+#print(batch.shape,"000000000")
+
+#y_predicted=test.test_cnn(batch)
+
+
+img_name='axe2.jpg'
+img = cv2.imread('test_img/'+img_name,0)
+img=255-img
+print(img.shape)
+resized_image = cv2.resize(img, (image_size, image_size),interpolation = cv2.INTER_CUBIC)
+cv2.imwrite('process_img/'+img_name+'.jpg', resized_image)
+resized_image=np.expand_dims(resized_image,0)
+resized_image=np.expand_dims(resized_image,3)
+y_predicted=test.test_cnn(resized_image)

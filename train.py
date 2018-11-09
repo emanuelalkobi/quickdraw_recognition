@@ -13,6 +13,8 @@ import sys
 import numpy as np
 import tensorflow as tf
 import numpy as np
+
+import test as test
 #print(path+'/fisr.png')
 
 
@@ -149,5 +151,14 @@ print(x_data.shape)
 print(y_data.shape)
 print(x_test.shape)
 print(y_test.shape)
-model_dict = apply_classification_loss(SVHN_net_v0)
-train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
+#model_dict = apply_classification_loss(SVHN_net_v0)
+#train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
+y_predicted=test.test_cnn(x_test)
+print(x_test.shape)
+print("predicted is :",(y_predicted.shape),y_test.shape)
+mistakes=np.nonzero(y_predicted-y_test)
+#mistakes is tuple,take the array only
+mistakes=mistakes[0]
+#print(mistakes[0],type(mistakes[0]))
+error_rate=mistakes.shape[0]/y_test.shape[0]
+print("accuracy is :",1-error_rate)
