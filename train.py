@@ -121,7 +121,7 @@ def load_data():
     axe_labels=np.zeros(axe_data.shape[0])*0
     cat_labels=np.ones(cat_data.shape[0])*1
     apple_labels=np.ones(apple_data.shape[0])*2
-    butterfly_labels=np.zeros(butterfly_data.shape[0])*3
+    butterfly_labels=np.ones(butterfly_data.shape[0])*3
     carrot_labels=np.ones(carrot_data.shape[0])*4
     clock_labels=np.ones(clock_data.shape[0])*5
     
@@ -163,11 +163,10 @@ train_model(model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
 
 #test test data after finishing training 
 y_predicted=test.test_cnn(x_test)
-print(x_test.shape)
-print("predicted is :",(y_predicted.shape),y_test.shape)
+
 mistakes=np.nonzero(y_predicted-y_test)
 #mistakes is tuple,take the array only
 mistakes=mistakes[0]
-#print(mistakes[0],type(mistakes[0]))
+print(mistakes[0],type(mistakes[0]))
 error_rate=mistakes.shape[0]/y_test.shape[0]
 print("accuracy is :",1-error_rate)
