@@ -15,14 +15,12 @@ import tensorflow as tf
 import numpy as np
 #print(path+'/fisr.png')
 
-quick_draw = {0: 'axe', 1: 'cat', 2:'apple',3:'butterfly',4:'carrot',5:'clock'}
-batch_size = 128
-num_of_classes=6
 image_size=28
-validate_data=3000
+
+
 
 # The following defines a simple CovNet Model.
-def SVHN_net_v0(x_):
+def SVHN_net_v0(x_,num_of_classes):
     with tf.variable_scope("CNN"):
         conv1 = tf.layers.conv2d(
                                  inputs=x_,
@@ -50,24 +48,36 @@ def SVHN_net_v0(x_):
         return tf.nn.softmax(logits)
 
 
+def create_dic():
+    dir_data='data/'
+    dict={}
+    i=0
+    for file in sorted(os.listdir(dir_data)):
+        if file.endswith(".npy"):
+            str=file.split(".")
+            print(str)
+            dict[str[0]]=i
+            i=i+1
 
-def test_cnn(test_img):
+
+    return i,dict
+
+def test_cnn(cnn,test_img):
     print("train cnn started")
-    x_ = tf.placeholder(tf.float32, [None, image_size, image_size,1],name='x')
-    y_=SVHN_net_v0(x_)
+    x_ = tf.placeholder(tf.float32, [None, cnn.image_size, cnn.image_size,1],name='x')
+    y_=SVHN_net_v0(x_,cnn.num_of_classes)
     y_pred=np.zeros(test_img.shape[0])
     saver = tf.train.Saver()
-    print("variables are1",tf.trainable_variables())
     with tf.Session() as sess:
         saver.restore(sess, "./saved_sess/model.ckpt")
         res=sess.run(y_, feed_dict={x_:test_img})
-        print(res.shape,res)
-        print("probability result:[axe,cat,apple]")
+        print(res.shape)
+        print("probability result:")
         for i,prob in enumerate(res):
             print("test number ",i)
-            for j in range(num_of_classes):
-                print("probability to be",quick_draw[j], ":%.16f" % prob[j])
-            print("predictes result for test number",i,"is:",quick_draw[np.argmax(res[i])])
+            for j in range(cnn.num_of_classes):
+                print("probability to be",cnn.dict[j], ":%.16f" % prob[j])
+            print("predictes result for test number",i,"is:",cnn.dict[np.argmax(res[i])])
             y_pred[i]=(np.argmax(res[i]))
         return(y_pred)
 
