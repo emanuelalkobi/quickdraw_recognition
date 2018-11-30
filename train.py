@@ -130,13 +130,14 @@ def load_data(cnn):
     index=0
     for file in sorted(os.listdir(dir_data)):
         if file.endswith(".npy"):
-            print(data_l.shape,data_d.shape,"cur label num!",index)
+            print(data_l.shape,data_d.shape,"cur label num!",index,file)
             curr_data=np.load(dir_data+file)
+            
+            #change to white background
+            curr_data=255-curr_data;
             data_d=np.concatenate((data_d,curr_data))
             data_l=np.concatenate((data_l,np.ones(curr_data.shape[0])*index))
             index=index+1
-
-
 
 
 
