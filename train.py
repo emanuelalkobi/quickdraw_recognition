@@ -35,7 +35,7 @@ class cnn:
         self.dir_data='data/'
         self.num_of_classes,self.dict =create_dic(self.dir_data)
         self.image_size = 28
-        self.validate_data = 3000
+        self.validate_data = 10000
 
 
 
@@ -60,9 +60,30 @@ def SVHN_net_v0(x_,num_of_classes):
         pool2 = tf.layers.max_pooling2d(inputs=conv2,
                                         pool_size=[2, 2],
                                         strides=2)  # convolution stride
+                                        
+        conv3 = tf.layers.conv2d(
+                                 inputs=pool2,
+                                 filters=32, # number of filters
+                                  kernel_size=[5, 5],
+                                  padding="same",
+                                  activation=tf.nn.relu)
+                                        
+        pool3 = tf.layers.max_pooling2d(inputs=conv3,
+                                        pool_size=[2, 2],
+                                        strides=2)
+        
+        conv4 = tf.layers.conv2d(
+                                 inputs=pool3,
+                                 filters=32, # number of filters
+                                 kernel_size=[5, 5],
+                                 padding="same",
+                                 activation=tf.nn.relu)
+            
+        pool4 = tf.layers.max_pooling2d(inputs=conv4,
+                                        pool_size=[2, 2],
+                                        strides=2)
                                  
-                                 
-        pool_flat = tf.contrib.layers.flatten(pool2, scope='pool2flat')
+        pool_flat = tf.contrib.layers.flatten(pool4, scope='pool2flat')
         dense = tf.layers.dense(inputs=pool_flat, units=500, activation=tf.nn.relu)
         logits = tf.layers.dense(inputs=dense, units=num_of_classes)
         return logits
