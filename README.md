@@ -53,10 +53,18 @@ Each draw is a 28 by 28  matrix grayscale bitmap in numpy .npy format.
 
 
 
-<img src="/process_img/apple.jpg" width="100" height="100" style="width:80%"> <img src="/process_img/axe.jpg.jpg" width="100" height="100" style="width:80%"> <img src="/process_img/cat.jpg" width="100" height="100" style="width:80%">
 
 
-	
+### Process data
+
+The data is available in few formats : ndjson,bin and npy. We use the .npy data format.
+
+In this format, the drawings are rendered to a 784 vector size. We reshape  this vector to a 28 by 28 matrix and then flip the value of the matrix (255-value) in order to get better result for our own drawings.
+
+
+ <img src="/process_img/cat.jpg" width="100" height="100" style="width:80%">  <img src="/test_img/cat.jpg" width="100" height="100" style="width:80%">	
+ 
+ <img src="/process_img/axe.jpg.jpg" width="100" height="100" style="width:80%"><img src="/test_img/axe.jpg" width="100" height="100" style="width:80%">
 
 
 
