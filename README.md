@@ -53,17 +53,8 @@ Each draw is a 28 by 28  matrix grayscale bitmap in numpy .npy format.
 
 
 
+<img src="/process_img/apple.jpg" width="100" height="100" style="width:80%"> <img src="/process_img/axe.jpg.jpg" width="100" height="100" style="width:80%"> <img src="/process_img/cat.jpg" width="100" height="100" style="width:80%">
 
-
-
-
-
-
-
-
-Ambulance
-
-Axe
 
 	
 
