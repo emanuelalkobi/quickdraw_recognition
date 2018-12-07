@@ -148,16 +148,21 @@ def load_data(cnn):
     num_of_classess,dict=create_dic(dir_data)
     data_l=np.zeros((1))
     data_d=np.zeros((1,cnn.image_size*cnn.image_size))
-    index=0
+    index=1
     for file in sorted(os.listdir(dir_data)):
         if file.endswith(".npy"):
             print(data_l.shape,data_d.shape,"cur label num!",index,file)
             curr_data=np.load(dir_data+file)
+            data_size=curr_data.shape
+            #take only 30 percent of the data
+            part_data=int(0.3*(data_size[0]))
+            curr_data=curr_data[1:part_data,:]
             
             #change to white background
             curr_data=255-curr_data;
             data_d=np.concatenate((data_d,curr_data))
             data_l=np.concatenate((data_l,np.ones(curr_data.shape[0])*index))
+           
             index=index+1
 
 
@@ -199,7 +204,7 @@ def main():
     train_model(quick_draw_cnn,model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
 
     #test test data after finishing training
-    y_predicted=test.test_cnn(quick_draw_cnn,x_test)
+    y_predicted=test.test_cnn(quick_draw_cnn,x_test,y_test)
 
     mistakes=np.nonzero(y_predicted-y_test)
     #mistakes is tuple,take the array only
@@ -207,7 +212,6 @@ def main():
     print(mistakes[0],type(mistakes[0]))
     error_rate=mistakes.shape[0]/y_test.shape[0]
     print("accuracy is :",1-error_rate)
-
 
 if __name__ == '__main__':
     main()

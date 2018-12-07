@@ -81,11 +81,12 @@ def create_dic():
 
     return i,dict
 
-def test_cnn(cnn,test_img):
+def test_cnn(cnn,test_img,y_test):
     print("train cnn started")
     x_ = tf.placeholder(tf.float32, [None, cnn.image_size, cnn.image_size,1],name='x')
     y_=SVHN_net_v0(x_,cnn.num_of_classes)
     y_pred=np.zeros(test_img.shape[0])
+    error_hist=np.zeros(cnn.num_of_classes)
     saver = tf.train.Saver()
     with tf.Session() as sess:
         saver.restore(sess, "./saved_sess/model.ckpt")
@@ -93,11 +94,17 @@ def test_cnn(cnn,test_img):
         print(res.shape)
         print("probability result:")
         for i,prob in enumerate(res):
-            print("test number ",i)
-            for j in range(cnn.num_of_classes):
-                print("probability to be",cnn.dict[j], ":%.16f" % prob[j])
-            print("predictes result for test number",i,"is:",cnn.dict[np.argmax(res[i])])
+            #print("test number ",i)
+            #for j in range(cnn.num_of_classes):
+            #print("probability to be",cnn.dict[j], ":%.16f" % prob[j])
+            #print("predictes result for test number",i,"is:",cnn.dict[np.argmax(res[i])],"correct result is ",cnn.dict[y_test[i]])
+            #if(np.argmax(res[i])!=y_test[i]):
+            #   print("!!!!",y_test[i],cnn.dict[y_test[i]])
+            #   error_hist[int(y_test[i])]=error_hist[int(y_test[i])]+1
+               
             y_pred[i]=(np.argmax(res[i]))
+        print("--------")
+        print(error_hist)
         return(y_pred)
 
 #axe_data=np.load('axe.npy')
