@@ -98,6 +98,3 @@ For the final result we apply a softmax function to get probabilities  for each 
 
 
 
-#data
-data is downloaded as numpy arrays from:
-https://github.com/googlecreativelab/quickdraw-dataset
