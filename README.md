@@ -85,9 +85,6 @@ We build a convolutional neural network in order to train our quick draw classif
      - Hidden layer with 500 units
      - RelU activation function
      - Flatten layer to the number of different classes.
-     - 91 stuff categories
-
-
 
 
 The function that we are minimizing using the Adam algorithm  is the sparse softmax cross entropy between logits(output of the CNN) and the truth labels.
