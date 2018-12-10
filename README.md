@@ -91,6 +91,7 @@ The function that we are minimizing using the Adam algorithm  is the sparse soft
 
 For the final result we apply a softmax function to get probabilities  for each class and we predicted the class as the class that has the highest probability.
 
+The accuracy of testing 100 classes is 0,930. The result is shown in LSTM_CNN_100class.ipny.
 
 ### LSTM
 LSTMs don’t have a fundamentally different architecture from RNNs, but they use a different function to compute the hidden state. The memory in LSTMs are called cells and you can think of them as black boxes that take as input the previous state  and current input. 
