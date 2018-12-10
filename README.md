@@ -91,6 +91,15 @@ The function that we are minimizing using the Adam algorithm  is the sparse soft
 
 For the final result we apply a softmax function to get probabilities  for each class and we predicted the class as the class that has the highest probability.
 
+
+### LSTM
+LSTMs don’t have a fundamentally different architecture from RNNs, but they use a different function to compute the hidden state. The memory in LSTMs are called cells and you can think of them as black boxes that take as input the previous state  and current input. 
+
+Internally, these cells decide what to keep in (and what to erase from) memory. They then combine the previous state, the current memory, and the input. It turns out that these types of units are very efficient at capturing long-term dependencies.
+
+To train and test LSTM model, run LSTM_CNN_100class.ipny.
+
+
 ### How the website works?
 We build a website which embedded our model using TensorFlow.js. The code is here: https://github.com/wym613/wym613.github.io
 To implement the model to website, we used Keras to generate the model.h5. And transform it to .json file by Tensorflow.js. Fianlly, to combine the backend and frontend, we use github.io to realize the website. You can see our demo vedio here:
