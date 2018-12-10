@@ -29,6 +29,8 @@ test_our.py:
 The command will be :
     python test_our.py --draw_path <draw path to identify>  --label <label of the current draw-truth label between 1 to 30>
 
+test.py:
+This file is an helper file and his main target his to run the validation draws over the CNN during training.It is also used the run the test_our.py file.
 
 ### Interactive web site:
 
