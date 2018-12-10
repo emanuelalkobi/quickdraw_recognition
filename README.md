@@ -91,6 +91,11 @@ The function that we are minimizing using the Adam algorithm  is the sparse soft
 
 For the final result we apply a softmax function to get probabilities  for each class and we predicted the class as the class that has the highest probability.
 
+### How the website works?
+We build a website which embedded our model using TensorFlow.js. The code is here: https://github.com/wym613/wym613.github.io
+To implement the model to website, we used Keras to generate the model.h5. And transform it to .json file by Tensorflow.js. Fianlly, to combine the backend and frontend, we use github.io to realize the website. You can see our demo vedio here:
+
+https://www.youtube.com/watch?v=4kolOGHQUC8&feature=youtu.be
 
 
 
