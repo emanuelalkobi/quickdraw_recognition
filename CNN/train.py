@@ -32,7 +32,7 @@ def create_dic(dir_data):
 class cnn:
     def __init__(self):
         self.batch_size = 128
-        self.dir_data='data/'
+        self.dir_data='../data/'
         self.num_of_classes,self.dict =create_dic(self.dir_data)
         self.image_size = 28
         self.validate_data = 10000
@@ -143,8 +143,8 @@ def train_model(cnn,model_dict, x_data,y_data,x_test,y_test ,epoch_n, print_ever
 
 
 
-def load_data(cnn):
-    dir_data='data/'
+def load_data(cnn,args):
+    dir_data='../data/'
     num_of_classess,dict=create_dic(dir_data)
     data_l=np.zeros((1))
     data_d=np.zeros((1,cnn.image_size*cnn.image_size))
@@ -155,14 +155,15 @@ def load_data(cnn):
             curr_data=np.load(dir_data+file)
             data_size=curr_data.shape
             #take only 30 percent of the data
-            part_data=int(0.3*(data_size[0]))
+            part_data=int((int(args.draws_per_class)/100)*(data_size[0]))
             curr_data=curr_data[1:part_data,:]
             
             #change to white background
             curr_data=255-curr_data;
             data_d=np.concatenate((data_d,curr_data))
             data_l=np.concatenate((data_l,np.ones(curr_data.shape[0])*index))
-           
+            if (index==int(args.class_num)):
+                break
             index=index+1
 
 
@@ -191,17 +192,12 @@ def load_data(cnn):
     return data_train,labels_train,data_test,labels_test
 
 
-def main():
+def main(args):
     quick_draw_cnn=cnn()
-    [x_data,y_data,x_test,y_test]=load_data(quick_draw_cnn)
+    [x_data,y_data,x_test,y_test]=load_data(quick_draw_cnn,args)
 
-    print("----------_#$%------")
-    print(x_data.shape)
-    print(y_data.shape)
-    print(x_test.shape)
-    print(y_test.shape)
     model_dict = apply_classification_loss(quick_draw_cnn,SVHN_net_v0)
-    train_model(quick_draw_cnn,model_dict, x_data,y_data,x_test,y_test ,epoch_n=1, print_every=20)
+    train_model(quick_draw_cnn,model_dict, x_data,y_data,x_test,y_test ,epoch_n=int(args.epoch), print_every=20)
 
     #test test data after finishing training
     y_predicted=test.test_cnn(quick_draw_cnn,x_test,y_test)
@@ -209,9 +205,19 @@ def main():
     mistakes=np.nonzero(y_predicted-y_test)
     #mistakes is tuple,take the array only
     mistakes=mistakes[0]
-    print(mistakes[0],type(mistakes[0]))
     error_rate=mistakes.shape[0]/y_test.shape[0]
-    print("accuracy is :",1-error_rate)
+    print("-----------------------------------------------------------------------")
+    print("Final accuracy is :",1-error_rate)
+    print("-----------------------------------------------------------------------")
+
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-ep', '--epoch', default=10)
+    parser.add_argument('-dpc', '--draws_per_class', default=30)
+    parser.add_argument('-class_num', '--class_num', default=30)
+    args = parser.parse_args()
+    print("-----------------------------------------------------------------------")
+    print("Train CNN with " ,args.epoch,"epochs",args.class_num,"classes",args.draws_per_class,"percent draws from each class")
+    print("-----------------------------------------------------------------------")
+    main(args)

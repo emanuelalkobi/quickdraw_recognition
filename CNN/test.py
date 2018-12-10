@@ -13,7 +13,6 @@ import sys
 import numpy as np
 import tensorflow as tf
 import numpy as np
-#print(path+'/fisr.png')
 
 image_size=28
 
@@ -74,7 +73,6 @@ def create_dic():
     for file in sorted(os.listdir(dir_data)):
         if file.endswith(".npy"):
             str=file.split(".")
-            print(str)
             dict[str[0]]=i
             i=i+1
 
@@ -82,7 +80,6 @@ def create_dic():
     return i,dict
 
 def test_cnn(cnn,test_img,y_test):
-    print("train cnn started")
     x_ = tf.placeholder(tf.float32, [None, cnn.image_size, cnn.image_size,1],name='x')
     y_=SVHN_net_v0(x_,cnn.num_of_classes)
     y_pred=np.zeros(test_img.shape[0])
@@ -91,8 +88,6 @@ def test_cnn(cnn,test_img,y_test):
     with tf.Session() as sess:
         saver.restore(sess, "./saved_sess/model.ckpt")
         res=sess.run(y_, feed_dict={x_:test_img})
-        print(res.shape)
-        print("probability result:")
         for i,prob in enumerate(res):
             #print("test number ",i)
             #for j in range(cnn.num_of_classes):
@@ -103,8 +98,6 @@ def test_cnn(cnn,test_img,y_test):
             #   error_hist[int(y_test[i])]=error_hist[int(y_test[i])]+1
                
             y_pred[i]=(np.argmax(res[i]))
-        print("--------")
-        print(error_hist)
         return(y_pred)
 
 #axe_data=np.load('axe.npy')

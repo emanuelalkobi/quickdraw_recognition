@@ -32,7 +32,7 @@ def create_dic(dir_data):
 class cnn:
     def __init__(self):
         self.batch_size = 128
-        self.dir_data='data/'
+        self.dir_data='../data/'
         self.num_of_classes,self.dict =create_dic(self.dir_data)
         self.image_size = 28
         self.validate_data = 3000
@@ -78,15 +78,25 @@ class cnn:
 #print(batch.shape,"000000000")
 
 #y_predicted=test.test_cnn(batch)
+def main(args):
+    quick_draw_cnn=cnn()
+    img = cv2.imread(args.draw_path,0)
+    print(img.shape)
+    num_of_classess,dict=create_dic('../data/')
+    resized_image = cv2.resize(img, (quick_draw_cnn.image_size, quick_draw_cnn.image_size),interpolation = cv2.INTER_CUBIC)
+    resized_image=np.expand_dims(resized_image,0)
+    resized_image=np.expand_dims(resized_image,3)
+    y_predicted=test.test_cnn(quick_draw_cnn,resized_image,1)
+    print(dict)
+    print("You inserted an ",dict[int(args.label)],"draw and our CNN predicted it as ",dict[int(y_predicted)-1])
 
-quick_draw_cnn=cnn()
-img_name='cat.jpg'
-img = cv2.imread('test_img/'+img_name,0)
-img=255-img
-print(img.shape)
-resized_image = cv2.resize(img, (quick_draw_cnn.image_size, quick_draw_cnn.image_size),interpolation = cv2.INTER_CUBIC)
-cv2.imwrite('process_img/'+img_name+'.jpg', resized_image)
-resized_image=np.expand_dims(resized_image,0)
-resized_image=np.expand_dims(resized_image,3)
-y_predicted=test.test_cnn(quick_draw_cnn,resized_image)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-dp', '--draw_path', )
+    parser.add_argument('-lab', '--label', )
+    args = parser.parse_args()
+    print("-----------------------------------------------------------------------")
+    print("Try to identify draw: " ,args.draw_path)
+    print("-----------------------------------------------------------------------")
+    main(args)
 
