@@ -44,6 +44,15 @@ ADD a clear explanation on how to use LSTM
 
 http://wym613.github.io
 
+
+We build a website which embedded our model using TensorFlow.js. 
+The code fot the website is stored here: https://github.com/wym613/wym613.github.io
+
+To implement the model to the website  we used Keras to generate the model.h5. And transform it to .json file by Tensorflow.js. 
+Fianlly, to combine the backend and frontend, we use github.io to realize the website. You can see our demo vedio here:
+
+https://www.youtube.com/watch?v=4kolOGHQUC8&feature=youtu.be
+
 ### What is Doodle recognition?
 
 Doodle recognition project is performed by a classifier that takes the user input, given as a sequence of strokes of points in x and y, and recognizes the object category that the user tried to draw. 
@@ -143,11 +152,7 @@ Internally, these cells decide what to keep in (and what to erase from) memory. 
 To train and test LSTM model, run /LSTM/LSTM_CNN_100class.ipny. The accuracy of testing 100 classes is 0.62.
 
 
-### How the website works?
-We build a website which embedded our model using TensorFlow.js. The code is here: https://github.com/wym613/wym613.github.io
-To implement the model to website, we used Keras to generate the model.h5. And transform it to .json file by Tensorflow.js. Fianlly, to combine the backend and frontend, we use github.io to realize the website. You can see our demo vedio here:
 
-https://www.youtube.com/watch?v=4kolOGHQUC8&feature=youtu.be
 
 
 
