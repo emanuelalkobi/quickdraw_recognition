@@ -1,5 +1,35 @@
 # Quickdraw recognition
 
+## How to run our code?
+
+### CNN 
+    In the CNN directory there  are all the files regard the CNN.
+
+    train.py:
+ 
+   *   This file train the CNN with the next parameters:
+       - epoch: number of epochs to run
+        
+       - draws per class: how much draws to use for training per class ( in % ,a number between 0 to 100)
+         
+       - class number:how much classes to train over, it will take the N classes alphabetically 
+    
+    The command will be :
+    python train.py --epoch <epoch number> -draws_per_class <percentage per class> -class_num <class number to train>
+    
+   *   In a case that no arguments will be set the next default arguments will run :
+       - epoch:10
+       - draws per class:30
+       - class number:30
+       
+       test_our.py
+       
+        *   This file test 1 draw  with the last CNN  model which was train.
+    
+    The command will be :
+    python test_our.py --draw_path <draw path to identify>  --label <the label of the current draw-truth label between 1 to 30>
+
+
 ### Interactive web site:
 
 http://wym613.github.io
