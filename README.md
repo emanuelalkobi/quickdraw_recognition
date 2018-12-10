@@ -32,6 +32,8 @@ The command will be :
 test.py:
 This file is an helper file and his main target his to run the validation draws over the CNN during training.It is also used the run the test_our.py file.
 
+The CNN/saved_see directory is used to save and store the trained model after training.
+
 ### Interactive web site:
 
 http://wym613.github.io
