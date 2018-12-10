@@ -50,6 +50,8 @@ Each draw is a 28 by 28  matrix grayscale bitmap in numpy .npy format.
     - Tree
     - Whale
     - Windmill
+    
+*   We also tested 100 classes for both CNN and LSTM. The accuracy and the 100 categories are shown in /LSTM/LSTM_CNN_100class.ipny.
 
 
 
@@ -91,14 +93,14 @@ The function that we are minimizing using the Adam algorithm  is the sparse soft
 
 For the final result we apply a softmax function to get probabilities  for each class and we predicted the class as the class that has the highest probability.
 
-The accuracy of testing 100 classes is 0,930. The result is shown in LSTM_CNN_100class.ipny.
+The accuracy of testing 100 classes is 0,930. The result is shown in /LSTM/LSTM_CNN_100class.ipny.
 
 ### LSTM
 LSTMs don’t have a fundamentally different architecture from RNNs, but they use a different function to compute the hidden state. The memory in LSTMs are called cells and you can think of them as black boxes that take as input the previous state  and current input. 
 
 Internally, these cells decide what to keep in (and what to erase from) memory. They then combine the previous state, the current memory, and the input. It turns out that these types of units are very efficient at capturing long-term dependencies.
 
-To train and test LSTM model, run LSTM_CNN_100class.ipny.
+To train and test LSTM model, run /LSTM/LSTM_CNN_100class.ipny.
 
 
 ### How the website works?
