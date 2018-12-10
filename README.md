@@ -34,7 +34,7 @@ This file is an helper file and his main target his to run the validation draws 
 
 The CNN/saved_see directory is used to save and store the trained model after training.
 
-### CNN 
+### LSTM 
 
 ADD a clear explanation on how to use LSTM
 ADD a clear explanation on how to use LSTM
