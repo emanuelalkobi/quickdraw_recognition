@@ -24,10 +24,10 @@ python train.py --epoch <epoch number> -draws_per_class <percentage per class> -
        
 test_our.py:
        
-        *   This file test 1 draw  with the last CNN  model which was train.
+   *   This file test 1 draw  with the last CNN  model which was train.
     
-    The command will be :
-    python test_our.py --draw_path <draw path to identify>  --label <the label of the current draw-truth label between 1 to 30>
+The command will be :
+    python test_our.py --draw_path <draw path to identify>  --label <label of the current draw-truth label between 1 to 30>
 
 
 ### Interactive web site:
