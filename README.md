@@ -30,7 +30,13 @@ The command will be :
     python test_our.py --draw_path <draw path to identify>  --label <label of the current draw-truth label between 1 to 30>
 
 test.py:
+
 This file is an helper file and his main target his to run the validation draws over the CNN during training.It is also used the run the test_our.py file.
+
+
+CNN_100class.ipynb:
+
+This file is a ipynb notebook file in which we used keras for training and testing for 100 different classes.
 
 The CNN/saved_see directory is used to save and store the trained model after training.
 The result of 100 class is in /CNN/CNN_100class.ipynb. The accuracy of testing 100 classes is 0.93.
