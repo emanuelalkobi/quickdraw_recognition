@@ -38,9 +38,9 @@ The CNN/saved_see directory is used to save and store the trained model after tr
 
 In the LSTM folder there are two files. One is for training 30 classes and the other is for training 100 classes. By using and testing the model, you need to install keras on laptop. 
 
-When you try to testing small number of classes, run the jupyter notebook in LSTM/LSTM_CNN_30classes.ipny. If you want to try more dataset, you could run LSTM.LSTM_CNN_100classes.ipny. You could add more dataset by downloading more  from the google cloud.
+When you try to testing small number of classes, run the jupyter notebook in LSTM/LSTM_30classes.ipny. If you want to try more dataset, you could run LSTM.LSTM_100classes.ipny. You could add more dataset by downloading more  from the google cloud.
 
-To train and test LSTM model, run /LSTM/LSTM_CNN_100class.ipny. The accuracy of testing 100 classes is 0.62.
+To train and test LSTM model, run /LSTM/LSTM_100class.ipny. The accuracy of testing 100 classes is 0.62.
 
 ### Interactive web site:
 
@@ -110,7 +110,7 @@ https://console.cloud.google.com/storage/browser/quickdraw_dataset/full/numpy_bi
 
 * At test_img directory there are few draws that we create to test our models.
 
-*   We also tested 100 classes for both CNN and LSTM. The accuracy and the 100 categories are shown in /LSTM/LSTM_CNN_100class.ipny.
+* We also tested 100 classes. The categories can be seen in /LSTM/LSTM_100class.ipny.
 
 
 
