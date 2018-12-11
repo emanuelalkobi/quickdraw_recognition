@@ -36,9 +36,9 @@ The CNN/saved_see directory is used to save and store the trained model after tr
 
 ### LSTM 
 
-ADD a clear explanation on how to use LSTM
-ADD a clear explanation on how to use LSTM
-ADD a clear explanation on how to use LSTM
+In the LSTM folder there are two files. One is for training 30 classes and the other is for training 100 classes. By using and testing the model, you need to install keras on laptop. 
+
+When you try to testing small number of classes, run the jupyter notebook in LSTM/LSTM_CNN_30classes.ipny. If you want to try more dataset, you could run LSTM.LSTM_CNN_100classes.ipny. You could add more dataset by downloading more to from the google cloud.
 
 ### Interactive web site:
 
