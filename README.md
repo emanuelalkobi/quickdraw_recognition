@@ -106,7 +106,13 @@ https://console.cloud.google.com/storage/browser/quickdraw_dataset/full/numpy_bi
     - Whale
     - Windmill
     
+* All the 30 calsses data set are stored at data directory.
+
+* At test_img directory there are few draws that we create to test our models.
+
 *   We also tested 100 classes for both CNN and LSTM. The accuracy and the 100 categories are shown in /LSTM/LSTM_CNN_100class.ipny.
+
+
 
 
 
