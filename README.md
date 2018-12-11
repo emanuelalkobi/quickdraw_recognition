@@ -39,7 +39,7 @@ The result of 100 class is in /CNN/CNN_100class.ipynb. The accuracy of testing 1
 
 In the LSTM folder there are two files. One is for training 30 classes and the other is for training 100 classes. By using and testing the model, you need to install keras on laptop. 
 
-When you try to testing small number of classes, run the jupyter notebook in LSTM/LSTM_30class.ipynb. If you want to try more dataset, you could run LSTM.LSTM_100class.ipynb. You could add more dataset by downloading more  from the google cloud.
+When you try to testing small number of classes, run the jupyter notebook in LSTM/LSTM_30class.ipynb. If you want to try more dataset, you could run LSTM/LSTM_100class.ipynb. You could add more dataset by downloading more  from the google cloud.
 
 To train and test LSTM model for 100 classes, run /LSTM/LSTM_100class.ipynb. The accuracy of testing 100 classes is 0.62.
 
